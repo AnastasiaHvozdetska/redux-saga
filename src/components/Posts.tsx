@@ -2,7 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
 
-export const Posts = ({ syncPosts }) => {
+interface Post
+{
+    title: string,
+}
+
+
+export const Posts = ({ syncPosts }: {syncPosts: Post[]}) => {
     if(!syncPosts.length) {
         return (
             <p>there are no posts</p>

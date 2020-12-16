@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Post = ({ title }) => {
+const Post = ({ title } : {title: string}) => {
     return (
         <div className="card">
             <div className="card-body">

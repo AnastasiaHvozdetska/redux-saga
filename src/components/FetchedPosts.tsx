@@ -1,7 +1,12 @@
 import React from 'react'
 import Post from './Post'
 
-const FetchedPosts = ({posts}) => {
+interface Post
+{
+    title: string,
+}
+
+const FetchedPosts = ({posts} : { posts: Post[]}) => {
     if(!posts.length) {
         return (
            <button className="btn btn-primary">Load</button>

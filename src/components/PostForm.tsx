@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { createPost } from '../redux/actions'
 
 class PostForm extends Component {
-    constructor(props) {
+    constructor(props: any) {
         super(props)
 
         this.state = {
@@ -11,7 +11,7 @@ class PostForm extends Component {
         }
     }
 
-    submitHandler = event => {
+    submitHandler = (event: React.ChangeEvent) => {
         event.preventDefault()
         const {title} = this.state
 
