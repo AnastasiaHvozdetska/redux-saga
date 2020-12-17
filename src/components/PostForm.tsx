@@ -2,18 +2,30 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createPost } from '../redux/actions'
 
-class PostForm extends Component {
-    constructor(props: any) {
+interface IPostFormState {
+    title: string,
+    value: string
+}
+
+type IPostFormProps = {
+    createPost: Function
+}
+
+class PostForm extends Component<IPostFormProps, IPostFormState> {
+    constructor(props: IPostFormProps) {
         super(props)
 
         this.state = {
-            title: ''
+            title: '',
+            value: ''
         }
     }
 
-    submitHandler = (event: React.ChangeEvent) => {
-        event.preventDefault()
-        const {title} = this.state
+    private submitHandler = async (
+        e: React.FormEvent<HTMLFormElement>
+      ): Promise<void> => {
+        e.preventDefault();
+        const { title } = this.state
 
         if(!title.trim()) {
             return
@@ -28,9 +40,9 @@ class PostForm extends Component {
         this.setState({
             title: ''
         })
-    }
+    };
 
-    changeInputHandler = event => {
+    changeInputHandler = (event: SyntheticEvent) => {
         this.setState((prev => ({
             ...prev,
             [event.target.name]: event.target.value
